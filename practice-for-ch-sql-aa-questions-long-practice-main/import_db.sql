@@ -10,8 +10,8 @@ CREATE TABLE questions(
     id integer NOT NULL
     title character
     body character
-    author character NOT NULL
-    FOREIGN KEY(author) REFERENCES users(fname)
+    author_id character NOT NULL
+    FOREIGN KEY(author) REFERENCES users(id)
 )
 
 
@@ -40,5 +40,18 @@ CREATE TABLE question_likes(
     question_id integer NOT NULL
     FOREIGN KEY(question_id) REFERENCES questions(id)
     FOREIGN KEY (user_id) REFERENCES users(id)
-
 )
+
+
+
+INSERT INTO users(fname, lname)
+VALUES
+    ('Rob', 'Lee'),
+    ('Jamie', 'Ingalls'),
+    ('spongebob', 'squarepants')
+
+
+INSERT INTO 
+    questions(title, body, author_id)
+VALUES
+    ('how?' 'how do i' (SELECT id FROM users WHERE fname = 'Rob'))
